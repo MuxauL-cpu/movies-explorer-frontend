@@ -1,0 +1,55 @@
+.profile {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: #202020;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  max-height: 700px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.profile__title {
+  margin: 148px 0 0 0;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.profile__signout {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 71px;
+  color: #EE3465;
+  max-width: 410px;
+  align-self: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile {
+    max-height: 1024px;
+  }
+
+  .profile__title {
+    margin: 310px 0 0 0;
+  }
+
+  .profile__signout {
+    margin-bottom: 270px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile {
+    max-height: 780px;
+  }
+
+  .profile__title {
+    margin: 144px 0 0 0;
+  }
+}

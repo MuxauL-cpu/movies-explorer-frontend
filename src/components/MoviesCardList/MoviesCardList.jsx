@@ -26,38 +26,38 @@ function MoviesCardList({ movies }) {
   }, [location.pathname]);
 
   return(
-    <>
-    <ul className='movies-card-list'>
-    {
+    <div className='movies-cards'>
+      <ul className='movies-cards__list'>
+      {
+          width <= 500 ?
+          getMovies(movies).slice(0, 5).map((movie) => {
+            return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
+          }) : 
+          width <= 768 ?
+          getMovies(movies).slice(0, 8).map((movie) => {
+            return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
+          }) :
+          getMovies(movies).map((movie) => {
+            return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
+          })
+        }
+      </ul>
+      {
         width <= 500 ?
-        getMovies(movies).slice(0, 5).map((movie) => {
-          return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
-        }) : 
-        width <= 768 ?
-        getMovies(movies).slice(0, 8).map((movie) => {
-          return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
-        }) :
-        getMovies(movies).map((movie) => {
-          return <MoviesCard movie={movie} key={movie.movieId} savedMovie={isSavedMovie} />
-        })
-      }
-    </ul>
-    {
-      width <= 500 ?
-        getMovies(movies).length > 5 ?
-          <button className='movies-card-list__button'>Ещё</button> :
-          <button className='movies-card-list__button movies-card-list__button_inactive'>Ещё</button>
-      : width <= 768 ?
-        getMovies(movies).length > 8 ?
-          <button className='movies-card-list__button'>Ещё</button> :
-          <button className='movies-card-list__button movies-card-list__button_inactive'>Ещё</button>
-      : width >= 1100 ?
-        getMovies(movies).length > 15 ?
-          <button className='movies-card-list__button'>Ещё</button> :
-          <button className='movies-card-list__button movies-card-list__button_inactive'>Ещё</button>
-      : ''
-      }
-    </>
+          getMovies(movies).length > 5 ?
+            <button className='movies-cards__button'>Ещё</button> :
+            <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>
+        : width <= 768 ?
+          getMovies(movies).length > 8 ?
+            <button className='movies-cards__button'>Ещё</button> :
+            <button className='movies-cards__button movies-card__button_inactive'>Ещё</button>
+        : width >= 1100 ?
+          getMovies(movies).length > 15 ?
+            <button className='movies-cards__button'>Ещё</button> :
+            <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>
+        : ''
+        }
+    </div>
   );
 }
 

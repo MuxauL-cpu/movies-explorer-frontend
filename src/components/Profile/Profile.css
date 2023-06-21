@@ -48,6 +48,10 @@
   padding-top: 0;
 }
 
+.profile__input:focus {
+  outline: 1px solid 	#4285F4;
+}
+
 .profile__input:last-of-type {
   margin-bottom: 0;
 }

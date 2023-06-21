@@ -1,5 +1,4 @@
 .about-me {
-  height: 560px;
   max-width: 1140px;
   margin: auto;
 }
@@ -46,7 +45,12 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 144px;
+  margin-top: 98px;
+}
+
+.about-me__github:hover {
+  transition: 0.2s ease-in;
+  opacity: 0.7;
 }
 
 .about-me__image {
@@ -62,7 +66,7 @@
   }
 
   .about-me__description {
-    max-width: 348px;
+    max-width: 360px;
   }
 
   .about-me__description-title {
@@ -78,6 +82,11 @@
   .about-me__description-text {
     font-size: 12px;
     line-height: 18px;
+    margin: 20px auto auto auto;
+  }
+
+  .about-me__github {
+    margin-top: 63px;
   }
 
   .about-me__image {
@@ -90,6 +99,7 @@
   .about-me__container {
     max-width: 292px;
     flex-direction: column-reverse;
+    margin: 61px auto auto auto;
     gap: 40px;
   }
 
@@ -116,7 +126,7 @@
   }
 
   .about-me__github {
-    margin-top: 40px;
+    margin-top: 22px;
   }
 
   .about-me__image {

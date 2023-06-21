@@ -1,6 +1,6 @@
 .techs {
   width: 100%;
-  height: 625px;
+  padding-bottom: 101px;
   background-color: #272727;
 }
 
@@ -8,7 +8,7 @@
   margin: 90px auto auto auto;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 27px;
 }
 
 .techs__container-title {
@@ -22,8 +22,8 @@
 
 .techs__container-description {
   font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
   text-align: center;
   letter-spacing: -0.04em;
   max-width: 460px;
@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 1100px) {
   .techs {
-    height: 587px;
+    padding-bottom: 85px;
   }
   
   .techs__container {
@@ -75,7 +75,7 @@
 
 @media screen and (max-width: 700px) {
   .techs {
-    height: 651px;
+    padding-bottom: 70px;
   }
 
   .techs__container {

@@ -28,7 +28,7 @@ function Popup({ isOpen, isClosed }) {
 
   return(
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-      <div className='popup__container'>
+      <div className={`popup__container ${isOpen ? 'popup__container_active' : 'popup__container_disable'}`}>
         <Navigation isPopup={isOpen} />
         <button className='popup__close' onClick={isClosed}></button>
       </div>

@@ -3,11 +3,9 @@
   flex-direction: row;
   padding: 0 70px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: transparent;
   margin: auto;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  color: #fff;
   height: 74px;
   margin-bottom: -74px;
 }

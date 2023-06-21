@@ -18,6 +18,11 @@
   background-color: #4285F4;
 }
 
+.form__button:hover {
+  transition: 0.2s ease-in;
+  opacity: 0.8;
+}
+
 .form_type-profile {
   margin: 120px auto 0 auto;
   max-width: 410px;
@@ -31,7 +36,7 @@
   font-size: 13px;
   line-height: 16px;
   max-width: 410px;
-  margin-top: 204px;
+  margin-top: 172px;
   background-color: #202020;
 }
 
@@ -41,7 +46,7 @@
   }
 
   .form__button_type-profile {
-    margin-top: 191px;
+    margin-top: 159px;
     font-size: 13px;
     line-height: 16px;
   }
@@ -75,7 +80,7 @@
   }
 
   .form__button_type-profile {
-    margin-top: 364px;
+    margin-top: 331px;
   }
 
   .form__button_type-login {

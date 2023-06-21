@@ -6,24 +6,29 @@ import Register from '../Register/Register';
 import Main from '../Main/Main';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Profile from '../Profile/Profile';
+import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
   let location = useLocation();
   const activeHeaderRoutes = ['/movies', '/saved-movies', '/profile', '/'];
+  const activeFooterRoutes = ['/movies', '/saved-movies', '/'];
 
   return (
-    <>
-    {activeHeaderRoutes.includes(location.pathname) ? <Header /> : ''}
-      <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/signin' element={<Login />} />
-        <Route path='/signup' element={<Register />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/movies' />
-        <Route path='/saved-movies' />
-        <Route path='*' element={<PageNotFound />} />
-      </Routes>
-    </>
+    <div className='app'>
+      {activeHeaderRoutes.includes(location.pathname) ? <Header /> : ''}
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/signin' element={<Login />} />
+          <Route path='/signup' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/saved-movies' element={<SavedMovies />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
+      {activeFooterRoutes.includes(location.pathname) ? <Footer /> : ''}
+    </div>
   );
 }
 

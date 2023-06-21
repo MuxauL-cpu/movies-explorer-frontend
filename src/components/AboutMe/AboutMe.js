@@ -11,12 +11,15 @@ function AboutMe() {
           <h4 className='about-me__description-title'>Михаил</h4>
           <p className='about-me__description-about'>Фронтенд-разработчик, 22 года</p>
           <p className='about-me__description-text'>
-            Я родился и живу в Москве, закончил факультет информатики и вычислительной техники МТУСИ.
-            Люблю слушать музыку. Недавно начал кодить.
+            Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. 
+            Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
+            С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, 
+            начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <a
             className='about-me__github'
-            href='https://github.com/MuxauL-cpu?tab=repositories'>
+            href='https://github.com/MuxauL-cpu?tab=repositories'
+            target='_blank'>
               GitHub
           </a>
         </div>

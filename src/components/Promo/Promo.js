@@ -1,5 +1,6 @@
 import './Promo.css';
 import earthImage from '../../images/earth-web_icon.svg';
+import NavTab from '../NavTab/NavTab';
 
 function Promo() {
   return(
@@ -10,10 +11,10 @@ function Promo() {
             Учебный проект студента факультета <span>Веб-разработки.</span>
           </h2>
           <p className='promo__description'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+          <NavTab />
         </div>
         <img src={earthImage} alt='Земля' className='promo__image' />
       </div>
-      <a className='promo__button' href='#about-project'>Узнать больше</a>
     </div>
   )
 }

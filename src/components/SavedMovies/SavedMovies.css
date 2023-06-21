@@ -1,0 +1,30 @@
+.saved-movies__button {
+  border: 1px solid #424242;
+  background-color: transparent;
+  max-width: 320px;
+  width: 100%;
+  height: 36px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 52px auto 158px auto;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.saved-movies__button:hover {
+  transition: 0.2s ease-in;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 700px) {
+  .saved-movies__button {
+    max-width: 240px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

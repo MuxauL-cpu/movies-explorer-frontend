@@ -43,3 +43,10 @@
   transform: translateX(16px);
   background: #2BE080;
 }
+
+@media screen and (max-width: 700px) {
+  .filter-checkbox {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}

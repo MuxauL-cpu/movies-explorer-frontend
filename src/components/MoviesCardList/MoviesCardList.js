@@ -24,8 +24,6 @@ function MoviesCardList({ movies }) {
     }
   }, [location.pathname])
 
-  console.log(isSavedMovie)
-
   return(
     <ul className='movies-card-list'>
       {

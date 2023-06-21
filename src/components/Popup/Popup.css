@@ -122,7 +122,7 @@
   }
   
   .popup__container-profile-popup {
-    margin-top: 617px;
+    margin-top: calc(100vh - 406px);
   }
 
   .popup__container-navigation-main-link-active {
@@ -151,7 +151,11 @@
     right: 17.44px;
   }
 
+  .popup__container-navigation {
+    margin-top: 142px;
+  }
+
   .popup__container-profile-popup {
-    margin-top: 434px;
+    margin-top: calc(100vh - 345px);
   }
 }

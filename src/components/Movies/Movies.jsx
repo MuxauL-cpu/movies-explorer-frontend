@@ -6,7 +6,7 @@ import './Movies.css';
 
 function Movies() {
   return(
-    <section className='movies'>
+    <section className='movies' aria-label='Фильмы'>
       <SearchForm />
       <MoviesCardList movies={movies} />
     </section>

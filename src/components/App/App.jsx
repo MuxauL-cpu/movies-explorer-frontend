@@ -15,9 +15,11 @@ function App() {
   const activeHeaderRoutes = ['/movies', '/saved-movies', '/profile', '/'];
   const activeFooterRoutes = ['/movies', '/saved-movies', '/'];
 
+  const loggedIn = location.pathname === '/' ? false : true;
+
   return (
     <div className='app'>
-      {activeHeaderRoutes.includes(location.pathname) ? <Header /> : ''}
+      {activeHeaderRoutes.includes(location.pathname) ? <Header loggedIn={loggedIn} /> : ''}
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/signin' element={<Login />} />

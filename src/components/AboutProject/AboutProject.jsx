@@ -24,18 +24,18 @@ function AboutProject() {
         </div>
       </div>
       <div className='about-project__duration'>
-        <div className='about-project__duration-back'>
+        <div className='about-project__duration-week about-project__duration-week_one'>
           1 неделя
         </div>
-        <div className='about-project__duration-front'>
+        <div className='about-project__duration-week about-project__duration-week_four'>
           4 недели
         </div>
       </div>
-      <div className='about-project__duration-tech'>
-        <div className='about-project__duration-tech_back'>
+      <div className='about-project__tech'>
+        <div className='about-project__tech-week about-project__tech-week_back'>
           Back-end
         </div>
-        <div className='about-project__duration-tech_front'>
+        <div className='about-project__tech-week about-project__tech-week_front'>
           Front-end
         </div>
       </div>

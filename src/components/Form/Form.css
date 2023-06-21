@@ -18,6 +18,10 @@
   background-color: #4285F4;
 }
 
+.form__button_type-save {
+  max-width: 410px;
+}
+
 .form__button:hover {
   transition: 0.2s ease-in;
   opacity: 0.8;
@@ -89,5 +93,9 @@
 
   .form__button_type-registration {
     margin-top: 239px;
+  }
+
+  .form__button_type-save {
+    margin-top: 349px;
   }
 }

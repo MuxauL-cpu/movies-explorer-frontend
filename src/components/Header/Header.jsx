@@ -6,7 +6,7 @@ import burgerMenu from '../../images/burger_icon.svg';
 import Popup from '../Popup/Popup';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header({ loggedIn }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const openPopup = () => {
@@ -23,13 +23,21 @@ function Header() {
         <NavLink to='/'>
           <img className='header__logo' src={logo} alt='Лого' />
         </NavLink>
-        <img src={burgerMenu} onClick={openPopup} className='header__burger-menu' />
-        <Navigation />
+        { loggedIn ?
+          <>
+            <img src={burgerMenu} onClick={openPopup} className='header__burger-menu' alt='Бургер меню' />
+            <Navigation loggedIn={loggedIn} />
+          </> :
+          <Navigation loggedIn={loggedIn} />
+        }
       </header>
-      <Popup
-        isOpen={isPopupOpen}
-        isClosed={closePopup}
-      />
+      { loggedIn ?
+        <Popup
+          isOpen={isPopupOpen}
+          isClosed={closePopup}
+          loggedIn={loggedIn}
+        /> : ''
+      }
     </>
   );
 }

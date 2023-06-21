@@ -8,23 +8,23 @@ function Portfolio() {
         Портфолио
       </h3>
       <div className='portfolio__links'>
-        <a className='portfolio__link' href='https://github.com/MuxauL-cpu/how-to-learn' target='_blank'>
+        <a className='portfolio__link' href='https://how-to-learn-navy.vercel.app/' target='_blank'>
           <p className='portfolio__link-text'>
             Статичный сайт
           </p>
-          <img className='portfolio__link-image' src={linkIcon} />
+          <img className='portfolio__link-image' src={linkIcon} alt='Ссылка на сайт' />
         </a>
-        <a className='portfolio__link' href='https://github.com/MuxauL-cpu/russian-travel' target='_blank'>
+        <a className='portfolio__link' href='https://russian-travel-red.vercel.app/' target='_blank'>
           <p className='portfolio__link-text'>
             Адаптивный сайт
           </p>
-          <img className='portfolio__link-image' src={linkIcon} />
+          <img className='portfolio__link-image' src={linkIcon} alt='Ссылка на сайт' />
         </a>
-        <a className='portfolio__link' href='https://github.com/MuxauL-cpu/react-mesto-api-full-gha' target='_blank'>
+        <a className='portfolio__link' href='https://react-mesto-auth-rho.vercel.app/sign-in' target='_blank'>
           <p className='portfolio__link-text'>
             Одностраничное приложение
           </p>
-          <img className='portfolio__link-image' src={linkIcon} />
+          <img className='portfolio__link-image' src={linkIcon} alt='Ссылка на сайт' />
         </a>
       </div>
     </section>

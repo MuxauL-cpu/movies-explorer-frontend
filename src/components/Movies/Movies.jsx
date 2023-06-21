@@ -9,7 +9,6 @@ function Movies() {
     <section className='movies'>
       <SearchForm />
       <MoviesCardList movies={movies} />
-      <button className='movies__button'>Ещё</button>
     </section>
   )
 }

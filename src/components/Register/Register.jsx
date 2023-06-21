@@ -21,7 +21,8 @@ function Register() {
             name='name'
             id='name'
             minLength='2'
-            maxLength='40' 
+            maxLength='40'
+            placeholder='Имя'
             value={values.name || ''}
             onChange={onChange}
             required
@@ -29,11 +30,12 @@ function Register() {
         <span className="register__input-error">{errors.name || ''}</span>
       </div>
       <div className='register__input-container'>
-        <label htmlFor='email' className='register__input-label'>Логин</label>
+        <label htmlFor='email' className='register__input-label'>E-mail</label>
         <input className={`register__input ${!isValid ? 'register__input_error' : ''}`}
             type='email'
             name='email'
             id='email'
+            placeholder='E-mail'
             value={values.email || ''}
             onChange={onChange}
             required
@@ -47,7 +49,8 @@ function Register() {
             name='password'
             id='password'
             minLength='6'
-            maxLength='40' 
+            maxLength='40'
+            placeholder='Пароль'
             value={values.password || ''}
             onChange={onChange}
             required

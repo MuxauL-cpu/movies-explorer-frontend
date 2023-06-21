@@ -5,16 +5,21 @@
   background-color: #202020;
   color: #fff;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  height: 100vh;
-  justify-content: center;
+}
+
+.not-found__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 247px;
+  gap: 5px;
 }
 
 .not-found__title {
   font-style: normal;
+  margin: auto;
   font-weight: 400;
   font-size: 140px;
   line-height: 169px;
-  margin: 246px 0 0 0;
 }
 
 .not-found__text {
@@ -23,35 +28,34 @@
   font-size: 16px;
   line-height: 19px;
   margin: 0;
-  margin-top: 5px;
 }
 
 .not-found__router {
-  margin-top: auto;
   text-decoration: none;
   color: #4285F4;
   font-size: 14px;
   line-height: 17px;
-  margin: auto 0 58px 0;
+  margin-top: 184px;
 }
 
 .not-found__router:hover {
   opacity: 0.7;
+  transition: opacity 0.2s ease-in;
 }
 
 @media screen and (max-width: 768px) {
-  .not-found__title {
-    margin: 407px 0 0 0;
-  }
-
-  .not-found__router {
-    margin: auto 0 222px 0;
+  .not-found__container {
+    margin-top: 410px;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .not-found__container {
+    margin-top: 329px;
+    gap: 11px;
+  }
+
   .not-found__title {
-    margin: 331px 0 0 0;
     font-size: 80px;
     line-height: 97px;
   }
@@ -64,6 +68,6 @@
   .not-found__router {
     font-size: 12px;
     line-height: 15px;
-    margin: auto 0 30px 0;
+    margin-top: 284px;
   }
 }

@@ -2,7 +2,7 @@ import './Popup.css';
 import React, { useEffect } from "react";
 import Navigation from '../Navigation/Navigation';
 
-function Popup({ isOpen, isClosed }) {
+function Popup({ isOpen, isClosed, loggedIn }) {
   useEffect(() => {
     function onKeyDown(evt) {
       if (evt.key === 'Escape') {
@@ -29,7 +29,7 @@ function Popup({ isOpen, isClosed }) {
   return(
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
       <div className={`popup__container ${isOpen ? 'popup__container_active' : 'popup__container_disable'}`}>
-        <Navigation isPopup={isOpen} />
+        <Navigation isPopup={isOpen} loggedIn={loggedIn} />
         <button className='popup__close' onClick={isClosed}></button>
       </div>
     </div>

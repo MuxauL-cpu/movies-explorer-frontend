@@ -46,28 +46,26 @@
   line-height: 17px;
 }
 
-.about-project__duration-back {
-  width: 20%;
-  height: 36px;
-  color: #000;
+.about-project__duration-week {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 36px;
+}
+
+.about-project__duration-week_one {
+  width: 20%;
+  color: #000;
   background-color: #3DDC84;
 }
 
-.about-project__duration-front {
+.about-project__duration-week_four {
   width: 80%;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   background-color: #303030;
 }
 
-.about-project__duration-tech {
+.about-project__tech {
   display: flex;
   flex-direction: row;
   margin: 14px auto auto auto;
@@ -79,11 +77,11 @@
   line-height: 17px;
 }
 
-.about-project__duration-tech_back {
+.about-project__tech-week_back {
   width: 20%;
 }
 
-.about-project__duration-tech_front {
+.about-project__tech-week_front {
   width: 80%;
 }
 
@@ -118,7 +116,7 @@
     max-width: 690px;
   }
 
-  .about-project__duration-tech {
+  .about-project__tech {
     font-size: 14px;
     line-height: 17px;
   }
@@ -158,16 +156,16 @@
     line-height: 13px;
   }
 
-  .about-project__duration-back {
+  .about-project__duration-week_one {
+    width: 40%;
+  }
+
+  .about-project__tech-week_back {
     width: 42%;
   }
 
-  .about-project__duration-tech {
+  .about-project__tech-week {
     font-size: 11px;
     line-height: 13px;
-  }
-
-  .about-project__duration-tech_back {
-    width: 42%;
   }
 }

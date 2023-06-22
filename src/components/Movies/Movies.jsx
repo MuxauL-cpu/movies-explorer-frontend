@@ -6,10 +6,12 @@ import './Movies.css';
 
 function Movies() {
   return(
-    <section className='movies' aria-label='Фильмы'>
-      <SearchForm />
-      <MoviesCardList movies={movies} />
-    </section>
+    <main>
+      <section className='movies' aria-label='Фильмы'>
+        <SearchForm />
+        <MoviesCardList movies={movies} />
+      </section>
+    </main>
   )
 }
 

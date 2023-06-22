@@ -26,11 +26,11 @@
   cursor: pointer;
 }
 
-.movies-card__button_inactive {
+.movies-cards__button_inactive {
   visibility: hidden;
 }
 
-.movies-card__button:hover {
+.movies-cards__button:hover {
   transition: 0.2s ease-in;
   opacity: 0.8;
 }

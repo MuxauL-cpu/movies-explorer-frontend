@@ -25,8 +25,8 @@ function Profile() {
 
 
   return(
-    <div className='profile'>
-      <h2 className='profile__title'>Привет, Михаил!</h2>
+    <section className='profile'>
+      <h1 className='profile__title'>Привет, Михаил!</h1>
       <Form
         buttonText='Редактировать'
         type='profile'
@@ -63,7 +63,7 @@ function Profile() {
         </div>
       </Form>
       { showSaveButton ? '' : <NavLink to='/signin' className='profile__signout'>Выйти из аккаунта</NavLink> }
-    </div>
+    </section>
   );
 }
 

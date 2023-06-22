@@ -26,7 +26,7 @@ function MoviesCardList({ movies }) {
   }, [location.pathname]);
 
   return(
-    <div className='movies-cards'>
+    <section className='movies-cards'>
       <ul className='movies-cards__list'>
       {
           width <= 500 ?
@@ -50,14 +50,14 @@ function MoviesCardList({ movies }) {
         : width <= 768 ?
           getMovies(movies).length > 8 ?
             <button className='movies-cards__button'>Ещё</button> :
-            <button className='movies-cards__button movies-card__button_inactive'>Ещё</button>
+            <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>
         : width >= 1100 ?
           getMovies(movies).length > 15 ?
             <button className='movies-cards__button'>Ещё</button> :
             <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>
         : ''
         }
-    </div>
+    </section>
   );
 }
 

@@ -5,10 +5,12 @@ import './SavedMovies.css';
 
 function SavedMovies() {
   return(
-    <section className='saved-movies' aria-label='Сохраненные фильмы'>
-      <SearchForm />
-      <MoviesCardList movies={movies} />
-    </section>
+    <main>
+      <section className='saved-movies' aria-label='Сохраненные фильмы'>
+        <SearchForm />
+        <MoviesCardList movies={movies} />
+      </section>
+    </main>
   );
 }
 

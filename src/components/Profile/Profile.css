@@ -4,12 +4,13 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
 .profile__title {
-  margin: 148px 0 0 0;
+  margin-top: 71px;
   text-align: center;
   font-style: normal;
   font-weight: 500;
@@ -23,7 +24,6 @@
   line-height: 16px;
   text-align: center;
   text-decoration: none;
-  margin-bottom: auto;
   color: #EE3465;
   max-width: 410px;
   align-self: center;
@@ -81,25 +81,13 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .profile {
-    max-height: 1024px;
-  }
-
   .profile__title {
-    margin: 310px 0 0 0;
-  }
-
-  .profile__signout {
-    margin-bottom: 270px;
+    margin-top: 40px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .profile {
-    max-height: 780px;
-  }
-
   .profile__title {
-    margin: 144px 0 0 0;
+    margin-top: 105px;
   }
 }

@@ -13,31 +13,35 @@ function Login() {
       linkText='Регистрация'
       type='login'
     >
-      <div className='login__input-container'>
-        <label htmlFor='email' className='login__input-label'>Логин</label>
-        <input className={`login__input ${!isValid ? 'login__input_error' : ''}`}
-            type='email'
-            name='email'
-            id='email'
-            value={values.email || ''}
-            onChange={onChange}
-            required
-          />
-        <span className="login__input-error">{errors.email || ''}</span>
-      </div>
-      <div className='login__input-container'>
-        <label htmlFor='email' className='login__input-label'>Пароль</label>
-        <input className='login__input'
-            type='password'
-            name='password'
-            id='password'
-            minLength='6'
-            maxLength='40' 
-            value={values.password || ''}
-            onChange={onChange}
-            required
-          />
-        <span className='login__input-error'>{errors.password || ''}</span>
+      <div className='login'>
+        <div className='login__input-container'>
+          <label htmlFor='email' className='login__input-label'>E-mail</label>
+          <input className={`login__input ${!isValid ? 'login__input_error' : ''}`}
+              type='email'
+              name='email'
+              id='email'
+              placeholder='E-mail'
+              value={values.email || ''}
+              onChange={onChange}
+              required
+            />
+          <span className="login__input-error">{errors.email || ''}</span>
+        </div>
+        <div className='login__input-container'>
+          <label htmlFor='email' className='login__input-label'>Пароль</label>
+          <input className='login__input'
+              type='password'
+              name='password'
+              id='password'
+              minLength='6'
+              maxLength='40'
+              placeholder='Пароль'
+              value={values.password || ''}
+              onChange={onChange}
+              required
+            />
+          <span className='login__input-error'>{errors.password || ''}</span>
+        </div>
       </div>
     </Auth>
   );

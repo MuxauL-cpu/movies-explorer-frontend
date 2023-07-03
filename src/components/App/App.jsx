@@ -16,6 +16,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import auth from '../../utils/Auth';
 import { moviesApi } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
+import { SHORT_MOVIE_DURATION } from '../../utils/constants';
 
 function App() {
   const location = useLocation();
@@ -27,11 +28,12 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [editFailed, setEditFailed] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [shortMovies, setShortMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
   const mainApi = new MainApi({
-    url: 'http://localhost:3000',
+    url: 'https://api.alimorf.movies.exp.nomoredomains.rocks',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -54,6 +56,7 @@ function App() {
       moviesApi.getMovies()
         .then((moviesData) => {
           setMovies(moviesData);
+          setShortMovies(moviesData.filter((shortMovie) => shortMovie.duration < SHORT_MOVIE_DURATION));
           localStorage.setItem('movies', JSON.stringify(moviesData));
         })
         .catch((error) => {
@@ -99,7 +102,7 @@ function App() {
   function userRegister(name, email, password) {
     auth.register(name, email, password)
       .then((res) => {
-        navigate('/signin');
+        userLogin(email, password);
       })
       .catch((error) => {
         console.log(`Ошибка: ${error}`);
@@ -160,9 +163,8 @@ function App() {
     localStorage.removeItem('savedSearchValue');
     localStorage.removeItem('savedShortSearchMovies');
     localStorage.removeItem('savedSearchMovies');
+    localStorage.clear();
   }
-
-  console.log(currentUser)
 
   return (
       <div className='app'>
@@ -208,6 +210,7 @@ function App() {
                 <ProtectedRoute 
                   element={Movies}
                   movies={movies}
+                  shortMovies={shortMovies}
                   loggedIn={loggedIn}
                   setMovies={setMovies}
                   saveMovie={userSaveMovie}

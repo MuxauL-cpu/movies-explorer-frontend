@@ -5,8 +5,10 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function SearchForm({ movies, setMovies, onCheck, filterMovies, isShortMovie }) {
+function SearchForm({ movies, filterMovies }) {
   const [searchValue, setSearchValue] = useState('');
+  const toggle = JSON.parse(localStorage.getItem('toggleButton'));
+  const [isShortMovie, setShortMovie] = useState(toggle);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,17 +19,17 @@ function SearchForm({ movies, setMovies, onCheck, filterMovies, isShortMovie }) 
     }
   }, [setSearchValue]);
 
-  async function changeHandler(evt) {
-    setSearchValue(evt.target.value);
-
-    if (location.pathname.includes('/saved-movies')) {
-      setMovies(movies);
-    } else if (location.pathname.includes('/movies')) {
-      setMovies(JSON.parse(localStorage.getItem('movies')));
-    }
+  async function toggleButton() {
+    setShortMovie(!isShortMovie);
+    filterMovies(movies, searchValue, !isShortMovie);
+    localStorage.setItem('toggleButton', !isShortMovie);
   }
 
-  function handleSubmit(evt) {
+  async function changeHandler(evt) {
+    setSearchValue(evt.target.value);
+  }
+
+  async function handleSubmit(evt) {
     evt.preventDefault();
 
     filterMovies(movies, searchValue, isShortMovie);
@@ -46,9 +48,9 @@ function SearchForm({ movies, setMovies, onCheck, filterMovies, isShortMovie }) 
           value={searchValue || ''}
           onChange={changeHandler}
         />
-        <img className='search-form__find-icon' src={findIcon} alt='Кнопка поиска' />
+        <img className='search-form__find-icon' src={findIcon} alt='Кнопка поиска' onClick={handleSubmit} />
       </form>
-      <FilterCheckbox onCheck={onCheck} />
+      <FilterCheckbox onCheck={toggleButton} isChecked={toggle} />
     </div>
   );
 }

@@ -2,51 +2,39 @@ import { useEffect, useState } from 'react';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './SavedMovies.css';
+import { SHORT_MOVIE_DURATION } from '../../utils/constants';
 
 function SavedMovies({ savedMovies, deleteMovie }) {
-  const [movies, setMovies] = useState([])
-  const [isShortMovie, setShortMovie] = useState(false);
-  const toggle = localStorage.getItem('saveToggleButton');
-  const filteredMovies = movies.filter((movie) => movie.duration < 40);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const savedSearchedMovies = localStorage.getItem('savedSearchMovies');
 
   useEffect(() => {
-    if (isShortMovie) {
-      setMovies(filteredMovies);
-    } else {
-      setMovies(savedMovies);
-    }
-  }, [isShortMovie, setShortMovie]);
-
-  useEffect(() => {
-    setMovies(savedMovies)
-  }, [savedMovies])
+    if (savedSearchedMovies) setFilteredMovies(JSON.parse(savedSearchedMovies));
+  }, [savedSearchedMovies]);
 
   async function filterMovies(movies, searchValue, isShortMovie) {
     let filtered = [];
 
     if (isShortMovie) {
-      filtered = movies.filter((movie) => {
-        return movie.duration < 40;
+      filtered = movies.filter((shortMovie) => {
+        return (
+          shortMovie.duration <= SHORT_MOVIE_DURATION &&
+          shortMovie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
+        );
       });
 
-      setMovies(filtered);
+      setFilteredMovies(filtered);
       localStorage.setItem('savedSearchValue', searchValue);
-      localStorage.setItem('savedShortSearchMovies', JSON.stringify(filtered));
+      localStorage.setItem('savedSearchMovies', JSON.stringify(filtered));
     } else {
       filtered = movies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
       });
 
-      setMovies(filtered);
+      setFilteredMovies(filtered);
       localStorage.setItem('savedSearchValue', searchValue);
       localStorage.setItem('savedSearchMovies', JSON.stringify(filtered));
     }
-  }
-
-  async function toggleButton() {
-    setShortMovie(!isShortMovie);
-    localStorage.setItem('saveToggleButton', !isShortMovie);
-    console.log(toggle)
   }
 
   return(
@@ -54,11 +42,12 @@ function SavedMovies({ savedMovies, deleteMovie }) {
       <section className='saved-movies' aria-label='Сохраненные фильмы'>
         <SearchForm
           movies={savedMovies}
-          setMovies={setMovies}
           filterMovies={filterMovies}
-          onCheck={toggleButton}
         />
-        <MoviesCardList movies={movies} deleteMovie={deleteMovie} />
+        <MoviesCardList
+          movies={filteredMovies}
+          deleteMovie={deleteMovie}
+        />
       </section>
     </main>
   );

@@ -27,7 +27,6 @@ function App() {
   
   const [loggedIn, setLoggedIn] = useState(false);
   const [movies, setMovies] = useState([]);
-  const [shortMovies, setShortMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
@@ -55,7 +54,6 @@ function App() {
       moviesApi.getMovies()
         .then((moviesData) => {
           setMovies(moviesData);
-          setShortMovies(moviesData.filter((shortMovie) => shortMovie.duration < SHORT_MOVIE_DURATION));
           localStorage.setItem('movies', JSON.stringify(moviesData));
         })
         .catch((error) => {
@@ -203,10 +201,8 @@ function App() {
               element={
                 <ProtectedRoute 
                   element={Movies}
-                  movies={movies}
-                  shortMovies={shortMovies}
                   loggedIn={loggedIn}
-                  setMovies={setMovies}
+                  movies={movies}
                   saveMovie={userSaveMovie}
                   deleteMovie={userDeleteSavedMovie}
                   savedMovies={savedMovies}
@@ -220,7 +216,6 @@ function App() {
                   element={SavedMovies}
                   loggedIn={loggedIn}
                   savedMovies={savedMovies}
-                  setMovies={setMovies}
                   deleteMovie={userDeleteSavedMovie}
                 />
               }

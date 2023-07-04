@@ -16,6 +16,10 @@ function SavedMovies({ savedMovies, deleteMovie }) {
     }
   }, [savedSearchedMovies]);
 
+  useEffect(() => {
+    setFilteredMovies(savedMovies)
+  }, [savedMovies]);
+
   async function filterMovies(movies, searchValue, isShortMovie) {
     let filtered = [];
 

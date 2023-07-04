@@ -45,7 +45,7 @@ function SavedMovies({ savedMovies, deleteMovie }) {
     <main>
       <section className='saved-movies' aria-label='Сохраненные фильмы'>
         <SearchForm
-          movies={filterMovies}
+          movies={filteredMovies}
           filterMovies={filterMovies}
         />
         <MoviesCardList

@@ -35,6 +35,10 @@
   text-align: center;
 }
 
+.profile__input_error {
+  color: #FF004C;
+}
+
 .profile__signout:hover {
   transition: 0.2s ease-in;
   opacity: 0.7;

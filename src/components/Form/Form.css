@@ -15,7 +15,11 @@
   border: 0;
   border-radius: 3px;
   cursor: pointer;
-  background-color: #4285F4;
+  background-color: #78a9f6;
+}
+
+.form__button_inactive {
+  opacity: .7;
 }
 
 .form__button_type-save {

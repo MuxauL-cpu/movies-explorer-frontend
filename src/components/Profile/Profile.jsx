@@ -5,8 +5,8 @@ import useValidation from '../../hooks/useValidation';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ signOut, updateUserInfo, editFailed }) {
-  const { values, onChange, resetForm } = useValidation();
+function Profile({ signOut, updateUserInfo }) {
+  const { values, onChange, resetForm, errors, isValid } = useValidation();
   const currentUser = useContext(CurrentUserContext);
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [isInputDisabled, setInputDisabled] = useState(false);
@@ -19,6 +19,7 @@ function Profile({ signOut, updateUserInfo, editFailed }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(isValid);
 
     updateUserInfo({ name: values.name, email: values.email });
     setShowSaveButton(!showSaveButton);
@@ -46,6 +47,7 @@ function Profile({ signOut, updateUserInfo, editFailed }) {
         onSubmit={onSubmit}
         showSaveButton={showSaveButton}
         updateUserInfo={handleSubmit}
+        isValid={isValid}
         
       >
         <div className='profile__input-container'>
@@ -63,6 +65,7 @@ function Profile({ signOut, updateUserInfo, editFailed }) {
             required
           />
         </div>
+        <span className='profile__input-error'>{errors.name}</span>
         <div className='profile__input-container'>
           <label htmlFor='email' className='profile__input-label'>E-mail</label>
           <input className={`profile__input`}
@@ -76,7 +79,7 @@ function Profile({ signOut, updateUserInfo, editFailed }) {
             required
           />
         </div>
-        { editFailed && <span className='profile__input-error'>При обновлении профиля произошла ошибка.</span>}
+        <span className='profile__input-error'>{errors.email}</span>
       </Form>
       { showSaveButton ? '' : <NavLink to='/signin' className='profile__signout' onClick={signOut}>Выйти из аккаунта</NavLink> }
     </section>

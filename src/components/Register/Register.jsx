@@ -20,11 +20,12 @@ function Register({ onRegister }) {
       linkText='Войти'
       type='registration'
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <div className='register'>
         <div className='register__input-container'>
           <label htmlFor='name' className='register__input-label'>Имя</label>
-          <input className={`register__input ${!isValid ? 'register__input_error' : ''}`}
+          <input className={`register__input ${errors.name ? 'register__input_error' : ''}`}
               type='name'
               name='name'
               id='name'
@@ -39,7 +40,7 @@ function Register({ onRegister }) {
         </div>
         <div className='register__input-container'>
           <label htmlFor='email' className='register__input-label'>E-mail</label>
-          <input className={`register__input ${!isValid ? 'register__input_error' : ''}`}
+          <input className={`register__input ${errors.email ? 'register__input_error' : ''}`}
               type='email'
               name='email'
               id='email'
@@ -52,7 +53,7 @@ function Register({ onRegister }) {
         </div>
         <div className='register__input-container'>
           <label htmlFor='email' className='register__input-label'>Пароль</label>
-          <input className={`register__input ${!isValid ? 'register__input_error' : ''}`}
+          <input className={`register__input ${errors.password ? 'register__input_error' : ''}`}
               type='password'
               name='password'
               id='password'

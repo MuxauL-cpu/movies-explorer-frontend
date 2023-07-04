@@ -20,11 +20,12 @@ function Login({ onLogin }) {
       linkText='Регистрация'
       type='login'
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <div className='login'>
         <div className='login__input-container'>
           <label htmlFor='email' className='login__input-label'>E-mail</label>
-          <input className={`login__input ${!isValid ? 'login__input_error' : ''}`}
+          <input className={`login__input ${errors.email ? 'login__input_error' : ''}`}
               type='email'
               name='email'
               id='email'
@@ -37,7 +38,7 @@ function Login({ onLogin }) {
         </div>
         <div className='login__input-container'>
           <label htmlFor='email' className='login__input-label'>Пароль</label>
-          <input className='login__input'
+          <input className={`login__input ${errors.password ? 'login__input_error' : ''}`}
               type='password'
               name='password'
               id='password'

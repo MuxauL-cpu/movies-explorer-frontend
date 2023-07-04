@@ -10,7 +10,11 @@ function Movies({ movies, saveMovie, deleteMovie, savedMovies }) {
   const searchedMovies = localStorage.getItem('searchedMovies');
 
   useEffect(() => {
-    if (searchedMovies) setFilteredMovies(JSON.parse(searchedMovies));
+    if (searchedMovies) {
+      setFilteredMovies(JSON.parse(searchedMovies));
+    } else {
+      setFilteredMovies(movies);
+    }
   }, [searchedMovies]);
 
   async function filterMovies(movies, searchValue, isShortMovie) {
@@ -38,7 +42,6 @@ function Movies({ movies, saveMovie, deleteMovie, savedMovies }) {
     }
   }
 
-  console.log(filteredMovies)
   return(
     <main>
       <section className='movies' aria-label='Фильмы'>

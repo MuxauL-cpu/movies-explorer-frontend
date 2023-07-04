@@ -3,7 +3,7 @@ import logo from '../../images/header_logo.svg'
 import Form from '../Form/Form';
 import { NavLink } from 'react-router-dom';
 
-function Auth({ children, buttonText, title, authRouteText, link, linkText, type, onSubmit }) {
+function Auth({ children, buttonText, title, authRouteText, link, linkText, type, onSubmit, isValid }) {
   return(
     <div className='auth'>
       <div className={`auth__container auth__container_type-${type}`}>
@@ -12,7 +12,7 @@ function Auth({ children, buttonText, title, authRouteText, link, linkText, type
         </NavLink>
         <h2 className='auth__title'>{title}</h2>
       </div>
-      <Form buttonText={buttonText} type={type} onSubmit={onSubmit}>
+      <Form buttonText={buttonText} type={type} onSubmit={onSubmit} isValid={isValid}>
         {children}
       </Form>
       <p className='auth__route-text'>

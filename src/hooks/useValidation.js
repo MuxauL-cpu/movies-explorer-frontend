@@ -12,7 +12,7 @@ function useValidation() {
     
     setValues((values) => ({ ...values, [name]: value}));
     setErrors((errors) => ({ ...errors, [name]: error}));
-    setValid(evt.target.closest('form').checkValidity())
+    setValid(evt.target.closest('form').checkValidity());
   }
 
   function resetForm(values = {}, errors = {}) {

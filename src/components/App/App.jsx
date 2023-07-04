@@ -26,7 +26,6 @@ function App() {
   const activeFooterRoutes = ['/movies', '/saved-movies', '/'];
   
   const [loggedIn, setLoggedIn] = useState(false);
-  const [editFailed, setEditFailed] = useState(false);
   const [movies, setMovies] = useState([]);
   const [shortMovies, setShortMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
@@ -116,10 +115,6 @@ function App() {
       })
       .catch((error) => {
         console.log(`Ошибка: ${error}`);
-        setEditFailed(true);
-        setTimeout(() => {
-          setEditFailed(false);
-        }, 5000);
       })
   }
 
@@ -197,7 +192,6 @@ function App() {
               element={
                 <ProtectedRoute 
                   element={Profile}
-                  editFailed={editFailed}
                   loggedIn={loggedIn}
                   signOut={signOut}
                   updateUserInfo={updateUserInfo}

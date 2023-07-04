@@ -9,14 +9,18 @@ function SavedMovies({ savedMovies, deleteMovie }) {
   const savedSearchedMovies = localStorage.getItem('savedSearchMovies');
 
   useEffect(() => {
-    if (savedSearchedMovies) setFilteredMovies(JSON.parse(savedSearchedMovies));
+    if (savedSearchedMovies) {
+      setFilteredMovies(JSON.parse(savedSearchedMovies));
+    } else {
+      setFilteredMovies(savedMovies);
+    }
   }, [savedSearchedMovies]);
 
   async function filterMovies(movies, searchValue, isShortMovie) {
     let filtered = [];
 
     if (isShortMovie) {
-      filtered = movies.filter((shortMovie) => {
+      filtered = savedMovies.filter((shortMovie) => {
         return (
           shortMovie.duration <= SHORT_MOVIE_DURATION &&
           shortMovie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
@@ -27,7 +31,7 @@ function SavedMovies({ savedMovies, deleteMovie }) {
       localStorage.setItem('savedSearchValue', searchValue);
       localStorage.setItem('savedSearchMovies', JSON.stringify(filtered));
     } else {
-      filtered = movies.filter((movie) => {
+      filtered = savedMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
       });
 
@@ -41,7 +45,7 @@ function SavedMovies({ savedMovies, deleteMovie }) {
     <main>
       <section className='saved-movies' aria-label='Сохраненные фильмы'>
         <SearchForm
-          movies={savedMovies}
+          movies={filterMovies}
           filterMovies={filterMovies}
         />
         <MoviesCardList

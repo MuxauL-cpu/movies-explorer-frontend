@@ -1,20 +1,17 @@
 import { React } from 'react';
 import './Form.css';
-import { nameValidation, emailValidation } from '../../utils/Validation';
-import useValidation from '../../hooks/useValidation';
 
-
-function Form({ children, buttonText, type, onSubmit, showSaveButton, updateUserInfo}) {
-  const { isValid } = useValidation();
+function Form({ children, buttonText, type, onSubmit, showSaveButton, updateUserInfo, isValid}) {
   return(
     <form className={`form form_type-${type}`} onSubmit={onSubmit}>
       {children}
-      { showSaveButton ? 
+      { showSaveButton ?
         <button
           className={`form__button form__button_type-save`}
           onClick={updateUserInfo}
           type='submit'
           id='submit'
+          disabled={!isValid}
         >Сохранить</button>
         :
         <button

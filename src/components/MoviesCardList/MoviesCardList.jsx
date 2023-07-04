@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }) {
   const [height, width] = useResize();
-  const [renderMovies, setRenderMovies] = useState(0);
+  const [renderMovies, setRenderMovies] = useState(16);
 
   const location = useLocation()
 
@@ -25,7 +25,7 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }
       setRenderMovies((prev) => prev + 4);
     } else if (width <= 500) {
       setRenderMovies((prev) => prev + 1);
-    } else if (width <= 768) {
+    } else if (width < 768) {
       setRenderMovies((prev) => prev + 2);
     }
   }
@@ -54,7 +54,7 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }
           movies.length > 5 && renderMovies < movies.length ?
             <button className='movies-cards__button' onClick={moreMovies}>Ещё</button> :
             <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>
-        : width <= 768 ?
+        : width < 1100 ?
           movies.length > 8 && renderMovies < movies.length ?
             <button className='movies-cards__button' onClick={moreMovies}>Ещё</button> :
             <button className='movies-cards__button movies-cards__button_inactive'>Ещё</button>

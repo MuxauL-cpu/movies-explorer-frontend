@@ -20,9 +20,15 @@ function SearchForm({ movies, filterMovies }) {
   }, [setSearchValue]);
 
   async function toggleButton() {
-    setShortMovie(!isShortMovie);
-    filterMovies(movies, searchValue, !isShortMovie);
-    localStorage.setItem('toggleButton', !isShortMovie);
+    if (searchValue !== null) {
+      setShortMovie(!isShortMovie);
+      filterMovies(movies, searchValue, !isShortMovie);
+      localStorage.setItem('toggleButton', !isShortMovie);
+    } else {
+      setShortMovie(!isShortMovie);
+      filterMovies(movies, '', !isShortMovie);
+      localStorage.setItem('toggleButton', !isShortMovie);
+    }
   }
 
   async function changeHandler(evt) {

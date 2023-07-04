@@ -47,6 +47,6 @@ class Auth {
   }
 }
   
-  const auth = new Auth({ url: "http://localhost:3000" });
+  const auth = new Auth({ url: "https://api.alimorf.movies.exp.nomoredomains.rocks" });
     
   export default auth;

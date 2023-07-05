@@ -38,7 +38,11 @@ function SearchForm({ movies, filterMovies }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    filterMovies(movies, searchValue, isShortMovie);
+    if (searchValue != null) {
+      filterMovies(movies, searchValue, isShortMovie);
+    } else {
+      filterMovies(movies, '', isShortMovie);
+    }
     console.log(searchValue);
   }
 

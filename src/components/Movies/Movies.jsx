@@ -4,9 +4,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 import { SHORT_MOVIE_DURATION } from '../../utils/constants';
+import Preloader from '../Preloader/Preloader';
 
 function Movies({ movies, saveMovie, deleteMovie, savedMovies }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const searchedMovies = localStorage.getItem('searchedMovies');
 
   useEffect(() => {
@@ -18,28 +20,33 @@ function Movies({ movies, saveMovie, deleteMovie, savedMovies }) {
   }, [movies, searchedMovies]);
 
   async function filterMovies(movies, searchValue, isShortMovie) {
-    let filtered = [];
-    
-    if (isShortMovie) {
-      filtered = movies.filter((shortMovie) => {
-        return (
-          shortMovie.duration <= SHORT_MOVIE_DURATION &&
-          shortMovie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
-        );
-      });
+    setLoading(true);
 
-      setFilteredMovies(filtered);
-      localStorage.setItem('searchValue', searchValue);
-      localStorage.setItem('searchedMovies', JSON.stringify(filtered));
-    } else {
-      filtered = movies.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase());
-      })
-        
-      setFilteredMovies(filtered);
-      localStorage.setItem('searchValue', searchValue);
-      localStorage.setItem('searchedMovies', JSON.stringify(filtered));
-    }
+    setTimeout(() => {
+      let filtered = [];
+    
+      if (isShortMovie) {
+        filtered = movies.filter((shortMovie) => {
+          return (
+            shortMovie.duration <= SHORT_MOVIE_DURATION &&
+            shortMovie.nameRU.toLowerCase().includes(searchValue.toLowerCase())
+          );
+        });
+
+        setFilteredMovies(filtered);
+        localStorage.setItem('searchValue', searchValue);
+        localStorage.setItem('searchedMovies', JSON.stringify(filtered));
+      } else {
+        filtered = movies.filter((movie) => {
+          return movie.nameRU.toLowerCase().includes(searchValue.toLowerCase());
+        })
+          
+        setFilteredMovies(filtered);
+        localStorage.setItem('searchValue', searchValue);
+        localStorage.setItem('searchedMovies', JSON.stringify(filtered));
+      }
+      setLoading(false);
+    }, 3000);
   }
 
   return(
@@ -49,12 +56,16 @@ function Movies({ movies, saveMovie, deleteMovie, savedMovies }) {
           movies={movies}
           filterMovies={filterMovies}
         />
-        <MoviesCardList
-          movies={filteredMovies}
-          saveMovie={saveMovie}
-          deleteMovie={deleteMovie}
-          savedMovies={savedMovies}
-        />
+        { loading ?
+          <Preloader />
+          :
+          <MoviesCardList
+            movies={filteredMovies}
+            saveMovie={saveMovie}
+            deleteMovie={deleteMovie}
+            savedMovies={savedMovies}
+          />
+        }
       </section>
     </main>
   )

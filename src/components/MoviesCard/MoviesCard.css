@@ -5,8 +5,11 @@
 }
 
 .movies-card__image {
+  cursor: pointer;
   object-fit: cover;
   height: 151px;
+  max-width: 270px;
+  width: 100%;
 }
 
 .movies-card__description {
@@ -89,7 +92,7 @@
 
   .movies-card__image {
     height: 190px;
-    width: 339px;
+    max-width: 339px;
   }
 }
 
@@ -100,6 +103,6 @@
 
   .movies-card__image {
     height: 168px;
-    width: 300px;
+    max-width: 300px;
   }
 }

@@ -31,7 +31,7 @@ function Navigation({ isPopup, loggedIn }) {
           >Фильмы</NavLink>
           <NavLink to='/saved-movies'
             className={`${isPopup ? 'popup__navigation-link' : 'navigation__route-link'} 
-            ${!isPopup ? setActiveRoute('/movies') : setActivePopupRoute('/saved-movies')}`}
+            ${!isPopup ? setActiveRoute('/saved-movies') : setActivePopupRoute('/saved-movies')}`}
           >Сохранённые фильмы</NavLink>
         
           <div className={`${!isPopup ? 'navigation__profile-container' : 'popup__container-profile-popup'}`}>

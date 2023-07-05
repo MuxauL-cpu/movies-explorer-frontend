@@ -26,11 +26,13 @@ function MoviesCard({ movie, saveMovie, deleteMovie, savedMovies }) {
   
   return(
     <li className='movies-card'>
-      <img
-        className='movies-card__image'
-        src={`${location.pathname.includes('/saved-movies') ? savedMovieImage : movieImage}`}
-        alt={movie.nameRU}
-      />
+      <a className='movies-card__image-container' href={movie.trailerLink} target='_blank' rel='noreferrer'>
+        <img
+          className='movies-card__image'
+          src={`${location.pathname.includes('/saved-movies') ? savedMovieImage : movieImage}`}
+          alt={movie.nameRU}
+        />
+      </a>
       <div className='movies-card__description'>
         <p className='movies-card__name'>
           {movie.nameRU}

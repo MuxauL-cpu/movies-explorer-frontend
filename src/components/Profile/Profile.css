@@ -27,6 +27,7 @@
   color: #EE3465;
   max-width: 410px;
   align-self: center;
+  cursor: pointer;
 }
 
 .profile__input-error {

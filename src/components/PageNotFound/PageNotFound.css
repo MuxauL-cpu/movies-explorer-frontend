@@ -37,6 +37,7 @@
 
 .not-found__router {
   text-decoration: none;
+  cursor: pointer;
   color: #4285F4;
   font-size: 14px;
   line-height: 17px;

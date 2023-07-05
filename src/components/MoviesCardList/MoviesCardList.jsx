@@ -3,6 +3,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import useResize from '../../hooks/useResize';
 import { useLocation } from 'react-router-dom';
+import { LAPTOP_RESOLUTION, MOBILE_RESOLUTION, MOVIES_RENDER_COUNT_LAPTOP, MOVIES_RENDER_COUNT_MOBILE, MOVIES_RENDER_COUNT_TABLET, TABLET_RESOLUTION } from '../../utils/constants';
 
 function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }) {
   const [height, width] = useResize();
@@ -11,22 +12,22 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }
   const location = useLocation()
 
   useEffect(() => {
-    if (width >= 1100) {
+    if (width >= LAPTOP_RESOLUTION) {
       setRenderMovies(16);
-    } else if (width <= 500) {
+    } else if (width <= MOBILE_RESOLUTION) {
       setRenderMovies(5);
-    } else if (width <= 768) {
+    } else if (width <= TABLET_RESOLUTION) {
       setRenderMovies(8);
     }
   }, [width])
   
   function moreMovies() {
-    if (width >= 1100) {
-      setRenderMovies((prev) => prev + 4);
-    } else if (width <= 500) {
-      setRenderMovies((prev) => prev + 1);
-    } else if (width < 768) {
-      setRenderMovies((prev) => prev + 2);
+    if (width >= LAPTOP_RESOLUTION) {
+      setRenderMovies((prev) => prev + MOVIES_RENDER_COUNT_LAPTOP);
+    } else if (width <= MOBILE_RESOLUTION) {
+      setRenderMovies((prev) => prev + MOVIES_RENDER_COUNT_MOBILE);
+    } else if (width < LAPTOP_RESOLUTION) {
+      setRenderMovies((prev) => prev + MOVIES_RENDER_COUNT_TABLET);
     }
   }
 

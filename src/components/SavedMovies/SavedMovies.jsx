@@ -12,7 +12,7 @@ function SavedMovies({ savedMovies, deleteMovie }) {
     if (savedSearchedMovies) {
       setFilteredMovies(JSON.parse(savedSearchedMovies));
     } else {
-      setFilteredMovies(savedMovies);
+      setFilteredMovies(localStorage.getItem('savedMovies'));
     }
   }, [savedSearchedMovies]);
 

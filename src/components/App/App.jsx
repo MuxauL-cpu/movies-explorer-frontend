@@ -84,6 +84,11 @@ function App() {
     }
   }, [loggedIn, currentUser._id, setSavedMovies])
 
+  useEffect(() => {
+    if (loggedIn)
+      localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+  }, [savedMovies, loggedIn]);
+
   function userLogin(email, password) {
     auth.login(email, password)
       .then((res) => {

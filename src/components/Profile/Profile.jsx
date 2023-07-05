@@ -81,7 +81,7 @@ function Profile({ signOut, updateUserInfo }) {
         </div>
         <span className='profile__input-error'>{errors.email}</span>
       </Form>
-      { showSaveButton ? '' : <NavLink to='/signin' className='profile__signout' onClick={signOut}>Выйти из аккаунта</NavLink> }
+      { showSaveButton ? '' : <p className='profile__signout' onClick={signOut}>Выйти из аккаунта</p> }
     </section>
   );
 }

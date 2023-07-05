@@ -1,11 +1,15 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import './PageNotFound.css';
 
-function PageNotFound() {
+function PageNotFound({ loggedIn }) {
   const navigate = useNavigate();
 
   function goBack() {
-    navigate(-1);
+    if (loggedIn) {
+      navigate(-2);
+    } else {
+      navigate(-1);
+    }
   }
   
   return(
@@ -14,7 +18,7 @@ function PageNotFound() {
         <h2 className='not-found__title'>404</h2>
         <p className='not-found__text'>Страница не найдена</p>
       </div>
-      <p className='not-found__router' onClick={goBack}>Назад</p>
+      <button className='not-found__router' onClick={goBack}>Назад</button>
     </section>
   );
 }

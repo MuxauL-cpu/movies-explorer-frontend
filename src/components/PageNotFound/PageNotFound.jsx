@@ -18,7 +18,7 @@ function PageNotFound({ loggedIn }) {
         <h2 className='not-found__title'>404</h2>
         <p className='not-found__text'>Страница не найдена</p>
       </div>
-      <button className='not-found__router' onClick={goBack}>Назад</button>
+      <p className='not-found__router' onClick={goBack}>Назад</p>
     </section>
   );
 }

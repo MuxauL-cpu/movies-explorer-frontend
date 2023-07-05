@@ -14,10 +14,13 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }
   useEffect(() => {
     if (width >= LAPTOP_RESOLUTION) {
       setRenderMovies(16);
+      console.log(renderMovies);
     } else if (width <= MOBILE_RESOLUTION) {
       setRenderMovies(5);
+      console.log(renderMovies);
     } else if (width <= TABLET_RESOLUTION) {
       setRenderMovies(8);
+      console.log(renderMovies);
     }
   }, [width])
   

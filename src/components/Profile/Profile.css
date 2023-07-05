@@ -36,6 +36,12 @@
   text-align: center;
 }
 
+.profile__input-success {
+  color: #228e49;
+  font-size: 11px;
+  text-align: center;
+}
+
 .profile__input_error {
   color: #FF004C;
 }

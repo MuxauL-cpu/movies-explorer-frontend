@@ -16,6 +16,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import auth from '../../utils/Auth';
 import { moviesApi } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
+import NotificationPopup from '../NotificationPopup/NotificationPopup';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,9 @@ function App() {
   const activeFooterRoutes = ['/movies', '/saved-movies', '/'];
   
   const [loggedIn, setLoggedIn] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [isPopupOpened, setPopupOpened] = useState(false);
+  const [title, setTitle] = useState('');
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
@@ -50,8 +54,6 @@ function App() {
         .catch((error) => { console.log(error) })
     }
   }, [])
-
-  console.log(loggedIn)
 
   useEffect(() => {
     if (loggedIn) {
@@ -93,36 +95,55 @@ function App() {
       localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
   }, [savedMovies, loggedIn]);
 
+  function closePopup() {
+    setPopupOpened(false);
+  }
+
   function userLogin(email, password) {
     auth.login(email, password)
       .then((res) => {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
+        setSuccess(true);
+        setTitle('Вы вошли, добро пожаловать');
         navigate('/movies');
       })
       .catch((error) => {
+        setSuccess(false);
+        setTitle('Что-то пошло не так, попробуйте ещё раз');
         console.log(`Ошибка: ${error}`);
       })
+      .finally(setPopupOpened(true));
   }
 
   function userRegister(name, email, password) {
     auth.register(name, email, password)
       .then((res) => {
         userLogin(email, password);
+        setSuccess(true);
+        setTitle('Регистрация и вход прошли успешно');
       })
       .catch((error) => {
+        setSuccess(false);
+        setTitle('Что-то пошло не так, попробуйте ещё раз');
         console.log(`Ошибка: ${error}`);
       })
+      .finally(setPopupOpened(true));
   }
 
   function updateUserInfo(name, email) {
     mainApi.patchUserInfo(name, email)
       .then((res) => {
         setCurrentUser(res);
+        setSuccess(true);
+        setTitle('Данные успешно обновлены');
       })
       .catch((error) => {
+        setSuccess(false);
+        setTitle('Данные не были обновлены');
         console.log(`Ошибка: ${error}`);
       })
+      .finally(setPopupOpened(true));
   }
 
   function userSaveMovie(movie, isSaved, id) {
@@ -190,6 +211,8 @@ function App() {
                 <ProtectedRoute 
                   element={Profile}
                   loggedIn={loggedIn}
+                  success={success}
+                  setSuccess={setSuccess}
                   signOut={signOut}
                   updateUserInfo={updateUserInfo}
                 />
@@ -222,6 +245,7 @@ function App() {
             <Route path='*' element={<PageNotFound loggedIn={loggedIn} />} />
           </Routes>
         {activeFooterRoutes.includes(location.pathname) ? <Footer /> : ''}
+        <NotificationPopup isOpen={isPopupOpened} success={success} isClosed={closePopup} headerText={title} />
         </CurrentUserContext.Provider>
       </div>
   );

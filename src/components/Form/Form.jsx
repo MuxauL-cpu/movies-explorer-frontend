@@ -7,7 +7,7 @@ function Form({ children, buttonText, type, onSubmit, showSaveButton, updateUser
       {children}
       { showSaveButton ?
         <button
-          className={`form__button form__button_type-save`}
+          className={`form__button form__button_type-save ${!isValid ? 'form__button_inactive' : ''}`}
           onClick={updateUserInfo}
           type='submit'
           id='submit'
@@ -15,10 +15,11 @@ function Form({ children, buttonText, type, onSubmit, showSaveButton, updateUser
         >Сохранить</button>
         :
         <button
-          className={`form__button form__button_type-${type}`}
+          className={`form__button form__button_type-${type} ${type === 'profile' ? '' : (!isValid ? 'form__button_inactive' : '')}`}
           onClick={onSubmit}
           type='submit'
           id='submit'
+          disabled={type === 'profile' ? false : !isValid}
          >{buttonText}</button>
       }
     </form>

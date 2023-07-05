@@ -19,8 +19,6 @@ function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }
 
   const location = useLocation()
 
-  console.log(renderMovies)
-
   useEffect(() => {
     if (width >= LAPTOP_RESOLUTION) {
       setRenderMovies(MOVIES_RENDER_LAPTOP);

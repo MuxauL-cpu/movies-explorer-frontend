@@ -59,3 +59,9 @@
   width: 25px;
   height: 25px;
 }
+
+@media screen and (max-width: 500px) {
+  .notification-popup__container {
+    width: 250px;
+  }
+}

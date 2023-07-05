@@ -20,6 +20,7 @@ function Profile({ signOut, updateUserInfo }) {
     evt.preventDefault();
 
     updateUserInfo({ name: values.name, email: values.email });
+    resetForm(currentUser);
     setShowSaveButton(!showSaveButton);
   }
 

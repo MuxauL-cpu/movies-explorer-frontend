@@ -16,7 +16,6 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import auth from '../../utils/Auth';
 import { moviesApi } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
-import { SHORT_MOVIE_DURATION } from '../../utils/constants';
 
 function App() {
   const location = useLocation();
@@ -43,11 +42,16 @@ function App() {
     if (jwt) {
       auth.checkToken(jwt)
         .then((res) => {
-          if (res) setLoggedIn(true);
+          if (res) {
+            setLoggedIn(true);
+            navigate(location.pathname);
+          }
         })
         .catch((error) => { console.log(error) })
     }
   }, [])
+
+  console.log(loggedIn)
 
   useEffect(() => {
     if (loggedIn) {
@@ -147,21 +151,9 @@ function App() {
   }
 
   function signOut() {
+    localStorage.clear();
     setLoggedIn(false);
-    localStorage.clear();
     navigate('/');
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('movies');
-    localStorage.removeItem('savedMovies');
-    localStorage.removeItem('shortMovies');
-    localStorage.removeItem('searchValue');
-    localStorage.removeItem('searchedMovies');
-    localStorage.removeItem('toggleButton');
-    localStorage.removeItem('saveToggleButton');
-    localStorage.removeItem('savedSearchValue');
-    localStorage.removeItem('savedShortSearchMovies');
-    localStorage.removeItem('savedSearchMovies');
-    localStorage.clear();
   }
 
   return (
@@ -178,6 +170,7 @@ function App() {
               path='/signin'
               element={
                 <Login
+                  loggedIn={loggedIn}
                   onLogin={userLogin}
                 />
               }
@@ -186,6 +179,7 @@ function App() {
               path='/signup'
               element={
                 <Register
+                  loggedIn={loggedIn}
                   onRegister={userRegister}
                 />
               }
@@ -225,7 +219,7 @@ function App() {
                 />
               }
             />
-            <Route path='*' element={<PageNotFound />} />
+            <Route path='*' element={<PageNotFound loggedIn={loggedIn} />} />
           </Routes>
         {activeFooterRoutes.includes(location.pathname) ? <Footer /> : ''}
         </CurrentUserContext.Provider>

@@ -3,10 +3,11 @@ import './PageNotFound.css';
 
 function PageNotFound() {
   const navigate = useNavigate();
-  function goBack() {
-    navigate(-1);
-  }
 
+  function goBack() {
+    navigate(-3);
+  }
+  
   return(
     <section className='not-found'>
       <div className='not-found__container'>

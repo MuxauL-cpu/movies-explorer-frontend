@@ -1,9 +1,16 @@
 import Auth from '../Auth/Auth';
 import useValidation from '../../hooks/useValidation';
 import './Login.css';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Login({ onLogin }) {
+function Login({ onLogin, loggedIn }) {
   const { values, errors, onChange, isValid } = useValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) navigate('/movies');
+  }, [loggedIn]);
 
   function handleSubmit(evt) {
     evt.preventDefault();

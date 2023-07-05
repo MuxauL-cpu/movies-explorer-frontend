@@ -65,6 +65,10 @@
   cursor: pointer;
 }
 
+.movies-card__delete-button_mobile {
+  visibility: visible;
+}
+
 .movies-card__delete-button:hover {
   transition: 0.2s ease-in;
   opacity: 0.8;

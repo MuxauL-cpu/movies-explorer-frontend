@@ -8,4 +8,7 @@ export const TABLET_RESOLUTION = 768;
 export const MOVIES_RENDER_COUNT_LAPTOP = 4;
 export const MOVIES_RENDER_COUNT_MOBILE = 1;
 export const MOVIES_RENDER_COUNT_TABLET = 2;
+export const MOVIES_RENDER_LAPTOP = 16;
+export const MOVIES_RENDER_MOBILE = 5;
+export const MOVIES_RENDER_TABLET = 8;
 export const TIMEOUT_DURATION = 3000;

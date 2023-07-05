@@ -3,24 +3,29 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import useResize from '../../hooks/useResize';
 import { useLocation } from 'react-router-dom';
-import { LAPTOP_RESOLUTION, MOBILE_RESOLUTION, MOVIES_RENDER_COUNT_LAPTOP, MOVIES_RENDER_COUNT_MOBILE, MOVIES_RENDER_COUNT_TABLET, TABLET_RESOLUTION } from '../../utils/constants';
+import { LAPTOP_RESOLUTION,
+         MOBILE_RESOLUTION, 
+         MOVIES_RENDER_COUNT_LAPTOP, 
+         MOVIES_RENDER_COUNT_MOBILE, 
+         MOVIES_RENDER_COUNT_TABLET, 
+         MOVIES_RENDER_LAPTOP, 
+         MOVIES_RENDER_MOBILE, 
+         MOVIES_RENDER_TABLET, 
+         TABLET_RESOLUTION } from '../../utils/constants';
 
 function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }) {
   const [height, width] = useResize();
-  const [renderMovies, setRenderMovies] = useState(16);
+  const [renderMovies, setRenderMovies] = useState(MOVIES_RENDER_LAPTOP);
 
   const location = useLocation()
 
   useEffect(() => {
     if (width >= LAPTOP_RESOLUTION) {
-      setRenderMovies(16);
-      console.log(renderMovies);
+      setRenderMovies(MOVIES_RENDER_LAPTOP);
     } else if (width <= MOBILE_RESOLUTION) {
-      setRenderMovies(5);
-      console.log(renderMovies);
+      setRenderMovies(MOVIES_RENDER_MOBILE);
     } else if (width <= TABLET_RESOLUTION) {
-      setRenderMovies(8);
-      console.log(renderMovies);
+      setRenderMovies(MOVIES_RENDER_TABLET);
     }
   }, [width])
   

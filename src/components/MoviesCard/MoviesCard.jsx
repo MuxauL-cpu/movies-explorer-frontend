@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import durationConvert from '../../utils/durationConvert'
 import './MoviesCard.css';
 import useResize from '../../hooks/useResize';
-import { MOBILE_RESOLUTION } from '../../utils/constants';
+import { TABLET_RESOLUTION } from '../../utils/constants';
 
 function MoviesCard({ movie, saveMovie, deleteMovie, savedMovies }) {
   const movieImage = `https://api.nomoreparties.co/${movie.image.url}`
@@ -41,7 +41,7 @@ function MoviesCard({ movie, saveMovie, deleteMovie, savedMovies }) {
           location.pathname.includes('/saved-movies')
           ? <button
             className={`
-              ${(width <= MOBILE_RESOLUTION) ? 'movies-card__delete-button movies-card__delete-button_mobile' : 'movies-card__delete-button'}
+              ${(width <= TABLET_RESOLUTION) ? 'movies-card__delete-button movies-card__delete-button_mobile' : 'movies-card__delete-button'}
             `}
             onClick={handleDeleteMovie} />
           : <button

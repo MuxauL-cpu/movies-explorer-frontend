@@ -15,9 +15,11 @@ import { LAPTOP_RESOLUTION,
 
 function MoviesCardList({ movies, saveMovie, deleteMovie, savedMovies, isSaved }) {
   const [height, width] = useResize();
-  const [renderMovies, setRenderMovies] = useState(MOVIES_RENDER_LAPTOP);
+  const [renderMovies, setRenderMovies] = useState(width <= MOBILE_RESOLUTION ? MOVIES_RENDER_TABLET : width < LAPTOP_RESOLUTION ? MOVIES_RENDER_TABLET : MOVIES_RENDER_LAPTOP);
 
   const location = useLocation()
+
+  console.log(renderMovies)
 
   useEffect(() => {
     if (width >= LAPTOP_RESOLUTION) {

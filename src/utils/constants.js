@@ -1,0 +1,14 @@
+export const SERVER_URL = 'https://api.nomoreparties.co/';
+export const SHORT_MOVIE_DURATION = 40;
+export const NAME_REGEX = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,10})+$/;
+export const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export const LAPTOP_RESOLUTION = 1100;
+export const MOBILE_RESOLUTION = 500;
+export const TABLET_RESOLUTION = 768;
+export const MOVIES_RENDER_COUNT_LAPTOP = 4;
+export const MOVIES_RENDER_COUNT_MOBILE = 1;
+export const MOVIES_RENDER_COUNT_TABLET = 2;
+export const MOVIES_RENDER_LAPTOP = 16;
+export const MOVIES_RENDER_MOBILE = 5;
+export const MOVIES_RENDER_TABLET = 8;
+export const TIMEOUT_DURATION = 3000;
